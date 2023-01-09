@@ -3,6 +3,10 @@
 ![Allauto Carros](https://i.postimg.cc/G2SyPDDh/image.png)
 
 ---
+## Novidades
+- Agora o site possui um sistema de login/sign completo
+
+---
 ## Sobre
 - Este é um projeto desenvolvido por conta própria afim de testar novos conceitos e aperfeiçoar habilidades
 
