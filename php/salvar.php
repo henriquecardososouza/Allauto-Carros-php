@@ -26,13 +26,11 @@
                 $_SESSION['email'] = $obj->getEmail();
                 $_SESSION['id'] = $obj->getId();
 
-                echo "<script> alert('Usuário cadastrado com sucesso!') </script>";
-                header("location: ../mostrar.php");
+                echo "<script> alert('Usuário cadastrado com sucesso!'); location.href = '../mostrar.php'; </script>";
             }
 
             else {
-                echo "<script> alert('Ocorreu um erro ao tentar cadastrar o usuário!') </script>";
-                header("location: ../sign.php");
+                echo "<script> alert('Ocorreu um erro ao tentar cadastrar o usuário!'); location.href = '../sign.php'; </script>";
             }
 
             break;
@@ -53,34 +51,54 @@
                     $_SESSION['email'] = $obj->getEmail();
                     $_SESSION['id'] = $obj->getId();
 
-                    echo "<script> alert('Bem vindo {$obj->getNome()}!'); </script>";
-                    header("location: ../mostrar.php");
+                    echo "<script> alert('Bem vindo {$obj->getNome()}!'); location.href = '../mostrar.php'; </script>";
 
                     return;
                 }
             }
 
-            echo "<script> alert('Usuário ou senha inválidos!'); </script>";
-            header("location: ../login.php");
+            echo "<script> alert('Usuário ou senha inválidos!'); location.href = '../login.php'; </script>";
 
             break;
         }
 
         case "excluir": {
-            if ($crud->delete($id)) {
-                echo "<script> alert('Usuário excluído com sucesso!'); </script>";
-            }
-
-            else {
-                echo "<script> alert('Ocorreu um erro ao tentar excluir o usuário!'); </script>";
-            }
-            
             if (isset($_POST['return'])) {
-                header("location: logout.php");
+                $return = "logout";
             }
 
             else {
-                header("location: ../listar.php");
+                $return = "listar";
+            }
+
+            if ($crud->delete($id)) {
+                echo "<script>
+                        alert('Usuário excluído com sucesso!');
+
+                        let return = ".$return.";
+
+                        if (return == 'logout') {
+                            location.href = 'logout.php';
+                        }
+
+                        else {
+                            location.href = '../listar.php';
+                        }
+                    </script>";
+            }
+
+            else {
+                echo "<script>
+                    alert('Ocorreu um erro ao tentar excluir o usuário!');
+
+                        if (".$return." == 'logout') {
+                            location.href = 'logout.php';
+                        }
+
+                        else {
+                            location.href = '../listar.php';
+                        }
+                    </script>";
             }
            
             break;
@@ -98,14 +116,13 @@
                 $_SESSION['email'] = $email;
                 $_SESSION['id'] = $obj->getId();
 
-                echo "<script> alert('Dados atualizados com sucesso!'); </script>";
+                echo "<script> alert('Dados atualizados com sucesso!'); location.href = '../mostrar.php'; </script>";
             }
 
             else {
-                echo "<script> alert('Ocorreu um erro ao tentar atualizar os dados do usuário!'); </script>";
+                echo "<script> alert('Ocorreu um erro ao tentar atualizar os dados do usuário!'); location.href = '../mostrar.php'; </script>";
             }
 
-            header("location: ../mostrar.php");
             break;
         }
 
