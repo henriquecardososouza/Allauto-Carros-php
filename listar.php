@@ -62,7 +62,6 @@
                     print "<tr>";
                     print "<th>Nome</th>";
                     print "<th>Email</th>";
-                    print "<th>Senha</th>";
                     print "<th>Ações</th>";
                     print "</tr>";
 
@@ -72,7 +71,6 @@
                         print "<tr>";
                         print "<td>".$obj->getNome()."</td>";
                         print "<td>".$obj->getEmail()."</td>";
-                        print "<td>".$obj->getSenha()."</td>";
 
                         if ($obj->getNome() != "Admin") {
                             print "<td> 

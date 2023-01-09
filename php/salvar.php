@@ -15,7 +15,7 @@
     $id = $_POST['id'];
     $nome = $_POST['nome'];
     $email = $_POST['email'];
-    $senha = md5($_POST['senha']);
+    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
     switch ($acao) {
         case "cadastrar": {
@@ -42,7 +42,7 @@
             foreach($ids as $id) {
                 $obj = $crud->read($id);
 
-                if ($obj->getNome() == $nome && $obj->getSenha() == $senha) {
+                if ($obj->getNome() == $nome && password_verify($_POST['senha'], $obj->getSenha())) {
                     if (!isset($_SESSION)) {
                         session_start();
                     }
