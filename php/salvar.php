@@ -75,9 +75,9 @@
                 echo "<script>
                         alert('Usuário excluído com sucesso!');
 
-                        let return = ".$return.";
+                        let retornar = '$return';
 
-                        if (return == 'logout') {
+                        if (retornar == 'logout') {
                             location.href = 'logout.php';
                         }
 
