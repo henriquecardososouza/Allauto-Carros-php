@@ -13,10 +13,10 @@
             self::$tabela = $tabela;
         }
 
-        public function create(Usuario $object) {
+        public function create($object) {
             $tabela = self::$tabela;
 
-            $sql = "INSERT INTO $tabela (id, nome, email, senha) VALUES(:id, :nome, :email, :senha)";
+            $sql = "INSERT INTO $tabela (id, nome, email, senha) VALUES (:id, :nome, :email, :senha)";
             $id = self::getNewId();
 
             try {
@@ -81,7 +81,7 @@
             return null;
         }
 
-        public function update(Usuario $object) {
+        public function update($object) {
             $tabela = self::$tabela;
 
             $sql = "UPDATE $tabela SET nome=:nome, email=:email, senha=:senha WHERE id=:id";

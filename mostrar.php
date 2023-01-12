@@ -53,7 +53,8 @@
 
             <?php
                 if ($_SESSION['nome'] == "Admin") {
-                    print "<br> <button class='botao' onclick='location.href=\"listar.php\"'>Administrar usuários</button>";
+                    print "<br> <button class='botao' onclick='location.href=\"listar.php\"'>Administrar Usuários</button>";
+                    print "<br> <button class='botao produtos' onclick='location.href=\"admin-produtos.php\"'>Administrar Produtos</button>";
                 }
 
                 else {

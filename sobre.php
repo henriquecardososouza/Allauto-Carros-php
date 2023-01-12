@@ -52,20 +52,17 @@
     </header>
 
     <section class="slider">
+        <div class="container">
+            <div id="title">
+                <h1>Allauto Locadora de Automóveis</h1>
+                <h2 id="description">Uma empresa que se preocupa com seus clientes</h2>
+            </div>
+        </div>
+
         <img class="slide mask" src="img/home section/slide1.webp" alt="Imagem 1">
         <img class="slide mask" src="img/home section/slide2.webp" alt="Imagem 2">
         <img class="slide mask" src="img/home section/slide3.webp" alt="Imagem 3">
         <img class="slide mask" src="img/home section/slide4.webp" alt="Imagem 4">
-
-        <div class="container">
-            <div id="title">
-                Allauto Locadora de Automóveis
-                <br>
-                <div id="description">
-                    Uma empresa que se preocupa com seus clientes
-                </div>
-            </div>
-        </div>
 
         <div id="mask"></div>
     </section>

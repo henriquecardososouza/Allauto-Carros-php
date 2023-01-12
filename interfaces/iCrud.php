@@ -1,9 +1,9 @@
 <?php
 
     interface iCrud {
-        public function create(Usuario $object);
+        public function create($object);
         public function read(int $id);
-        public function update(Usuario $object);
+        public function update($object);
         public function delete(int $id);
     }
 
