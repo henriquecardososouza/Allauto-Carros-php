@@ -47,7 +47,7 @@
         <div class="form">
             <h1>Entrar</h1>
             <br>
-            <form action="php/salvar.php" method="POST">
+            <form action="usuario/salvar.php" method="POST">
                 <input type="hidden" name="acao" value="verificar">
                 <input type="text" name="nome" placeholder="Nome" required>
                 <input type="password" name="senha" placeholder="Senha" required>

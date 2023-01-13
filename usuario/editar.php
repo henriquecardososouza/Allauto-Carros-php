@@ -17,28 +17,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allauto Carros | Edit</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
     <header>
         <div class="container">
             <div id="titulo">
-                <a href="index.php"> <img src="img/logo.webp" alt="Allauto Carros"> </a>
+                <a href="../index.php"> <img src="../img/logo.webp" alt="Allauto Carros"> </a>
             </div>
             
             <nav>
                 <ul>
                     <li>
-                        <a href="index.php">Home</a>
+                        <a href="../">Home</a>
                     </li>
                     
                     <li>
-                        <a href="sobre.php">Sobre</a>
+                        <a href="../sobre.php">Sobre</a>
                     </li>
                     
                     <li>
-                        <a href="veiculos.php">Veículos</a>
+                        <a href="../veiculos.php">Veículos</a>
                     </li>
                 </ul>
             </nav>
@@ -49,7 +49,7 @@
         <div class="form">
             <h1>Editar</h1>
             <br>
-            <form action="php/salvar.php" method="POST">
+            <form action="salvar.php" method="POST">
                 <input type="hidden" name="acao" value="editar">
 
                 <input id="nome-field" type="text" name="nome" placeholder="Nome" value="<?php print $_SESSION['nome']; ?>" required>

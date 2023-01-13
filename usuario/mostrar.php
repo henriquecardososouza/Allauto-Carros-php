@@ -17,27 +17,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allauto Carros | <?php print $_SESSION['nome'] ?></title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <header>
         <div class="container">
             <div id="titulo">
-                <a href="index.php"> <img src="img/logo.webp" alt="Allauto Carros"> </a>
+                <a href="../index.php"> <img src="../img/logo.webp" alt="Allauto Carros"> </a>
             </div>
             
             <nav>
                 <ul>
                     <li>
-                        <a href="index.php">Home</a>
+                        <a href="../index.php">Home</a>
                     </li>
                     
                     <li>
-                        <a href="sobre.php">Sobre</a>
+                        <a href="../sobre.php">Sobre</a>
                     </li>
                     
                     <li>
-                        <a href="veiculos.php">Veículos</a>
+                        <a href="../veiculos.php">Veículos</a>
                     </li>
                 </ul>
             </nav>
@@ -54,7 +54,7 @@
             <?php
                 if ($_SESSION['nome'] == "Admin") {
                     print "<br> <button class='botao' onclick='location.href=\"listar.php\"'>Administrar Usuários</button>";
-                    print "<br> <button class='botao produtos' onclick='location.href=\"admin-produtos.php\"'>Administrar Produtos</button>";
+                    print "<br> <button class='botao produtos' onclick='location.href=\"../veiculo/administrar.php\"'>Administrar Veículos</button>";
                 }
 
                 else {
@@ -65,7 +65,7 @@
             <br>
             <button class="botao editar" onclick=" location.href = 'editar.php'; ">Editar</button>
             <br>
-            <button class="botao sair" onclick=" location.href = 'php/logout.php'; ">Sair</button>
+            <button class="botao sair" onclick=" location.href = 'logout.php'; ">Sair</button>
             
         </div>
     </section>

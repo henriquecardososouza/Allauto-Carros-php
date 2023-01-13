@@ -6,6 +6,14 @@
     if (!isset($_SESSION['id']) || $_SESSION['id'] != 1) {
         header("location: ./");
     }
+    
+    error_reporting(E_ERROR | E_PARSE);
+                
+    include_once("../interfaces/iCrud.php");
+    include_once("../classes/Config.php");
+    include_once("../classes/Connection.php");
+    include_once("../classes/Usuario.php");
+    include_once("../classes/Crud.php");
 ?>
 
 <!DOCTYPE html>
@@ -15,28 +23,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allauto Carros | <?php print $_SESSION['nome']; ?></title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
     <header>
         <div class="container">
             <div id="titulo">
-                <a href="./"> <img src="img/logo.webp" alt="Allauto Carros"> </a>
+                <a href="../"> <img src="../img/logo.webp" alt="Allauto Carros"> </a>
             </div>
             
             <nav>
                 <ul>
                     <li>
-                        <a href="./">Home</a>
+                        <a href="../">Home</a>
                     </li>
                     
                     <li>
-                        <a href="sobre.php">Sobre</a>
+                        <a href="../sobre.php">Sobre</a>
                     </li>
                     
                     <li>
-                        <a href="veiculos.php">Veículos</a>
+                        <a href="../veiculos.php">Veículos</a>
                     </li>
                 </ul>
             </nav>
@@ -48,10 +56,6 @@
             <h2>Usuários Cadastrados</h2>
 
             <?php
-                error_reporting(E_ERROR | E_PARSE);
-                
-                require_once("interfaces/iCrud.php");
-                require_once("classes/Crud.php");
 
                 $crud = new Crud("usuarios");
 
@@ -66,7 +70,7 @@
                     print "</tr>";
 
                     foreach($ids as $id) {
-                        $obj = $crud->read($id);
+                        $obj = $crud->read($id, "usuario");
                         
                         print "<tr>";
                         print "<td>".$obj->getNome()."</td>";

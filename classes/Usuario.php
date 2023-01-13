@@ -6,10 +6,10 @@
         private String $senha;
         private ?int $id = null;
 
-        public function __construct($nome, $email, $senha) {
-            $this->nome = $nome;
-            $this->email = $email;
-            $this->senha = $senha;
+        public function __construct($params) {
+            $this->nome = $params[0];
+            $this->email = $params[1];
+            $this->senha = $params[2];
         }
 
         public function getNome() {
@@ -26,6 +26,12 @@
         
         public function getId() {
             return $this->id;
+        }
+
+        public function getAllAtributes() {
+            $atributes = [$this->id, $this->nome, $this->email, $this->senha];
+
+            return $atributes;
         }
 
         public function setNome(String $nome) {

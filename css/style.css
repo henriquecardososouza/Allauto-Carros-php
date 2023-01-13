@@ -228,7 +228,14 @@ header #titulo img {
 #products .container .ver-tudo:hover a #ver-mais img {
   background-color: #3e3e3e;
 }
-#products .container .product-container {
+#products .container a {
+  width: 350px;
+  height: 420px;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+#products .container a .product-container {
   width: 350px;
   height: 420px;
   display: inline-block;
@@ -238,33 +245,29 @@ header #titulo img {
   border-radius: 9px;
   transition: 0.5s;
 }
-#products .container .product-container:hover {
+#products .container a .product-container:hover {
   background-color: #3e3e3e;
 }
-#products .container .product-container:nth-child(4) {
+#products .container a .product-container#last-card {
   -webkit-mask-image: linear-gradient(to right, #2c2c2c 0, transparent 90%);
   mask-image: linear-gradient(to right, #2c2c2c 0, transparent 90%);
 }
-#products .container .product-container a {
-  width: 350px;
-  height: 420px;
-  text-decoration: none;
-  color: white;
-  text-align: center;
-}
-#products .container .product-container a .produto img {
+#products .container a .product-container .produto img {
   width: 100%;
 }
-#products .container .product-container a .produto h2 {
+#products .container a .product-container .produto h2 {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 40px;
   text-shadow: 3px 3px 3px black;
   display: grid;
 }
-#products .container .product-container a .produto h2.preco {
+#products .container a .product-container .produto h2.not-exists {
+  color: rgba(255, 255, 255, 0.5);
+}
+#products .container a .product-container .produto h2.preco {
   color: #ffd000;
 }
-#products .container .product-container a .produto h2 label {
+#products .container a .product-container .produto h2 span {
   font-size: 13px;
   color: white;
 }
@@ -325,37 +328,39 @@ header #titulo img {
 }
 
 /*Produtos*/
-section#produtos .veiculo {
-  width: 80%;
+section#produtos a {
+  text-decoration: none;
+  color: white;
+  margin: auto;
+}
+section#produtos a .veiculo {
+  width: 450px;
   border: 2px solid #585858;
   padding: 20px;
   border-radius: 10px;
-  margin: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin: 20px 10px;
+  transition: 0.3s;
+  display: inline-block;
 }
-section#produtos .veiculo img {
+section#produtos a .veiculo img {
   width: 100%;
   margin: 20px 0 0 0;
+  border-radius: 10px;
 }
-section#produtos .veiculo h1 {
+section#produtos a .veiculo h1 {
   color: #ffd000;
   font-size: 30px;
   text-align: center;
   text-decoration: none;
 }
-section#produtos .veiculo a {
-  text-decoration: none;
-  color: white;
-}
-section#produtos .veiculo a:hover {
-  text-decoration: underline;
+section#produtos a .veiculo:hover {
+  background-color: #3e3e3e;
 }
 section#produtos h1 {
   color: white;
   font-size: 60px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  text-decoration: underline;
+  text-shadow: 4px 4px 4px black;
 }
 section#produtos h1 span {
   color: #ffd000;
@@ -546,6 +551,72 @@ section#produtos h1 span {
   background-color: #751c1c;
 }
 
+section#form-cad-veiculo {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+section#form-cad-veiculo form {
+  width: 400px;
+  height: 670px;
+  border-radius: 10px;
+  border: 2px solid #585858;
+}
+section#form-cad-veiculo form h1 {
+  color: white;
+  font-size: 38px !important;
+  margin-bottom: 70px;
+}
+section#form-cad-veiculo form label {
+  color: white;
+  display: flex;
+  margin-left: 40px;
+}
+section#form-cad-veiculo form input[type=text] {
+  width: 80%;
+  height: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 60px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #585858;
+  outline: none;
+  color: white;
+  transition: 0.5s;
+}
+section#form-cad-veiculo form input[type=text]:focus {
+  border-bottom: 2px solid white;
+}
+section#form-cad-veiculo form input[type=file] {
+  color: white;
+  margin-left: 40px;
+  display: flex;
+}
+section#form-cad-veiculo form button {
+  border: none;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.5s;
+  margin-left: 62px;
+  position: absolute;
+}
+section#form-cad-veiculo form button:hover {
+  background-color: #01a72b;
+}
+section#form-cad-veiculo form button.btn-cancel {
+  margin-left: -162px;
+}
+section#form-cad-veiculo form button.btn-cancel:hover {
+  background-color: #751c1c;
+}
+
 section#mostrar {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -633,6 +704,49 @@ section#listar .container table td button:hover {
   background-color: #751c1c;
 }
 
+section#listar-veiculos .container button.btn {
+  border: none;
+  color: white;
+  background-color: transparent;
+  transition: 0.5s;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+section#listar-veiculos .container button.btn.editar:hover {
+  background-color: #136cd1;
+}
+section#listar-veiculos .container button.btn.excluir:hover {
+  background-color: #bd2424;
+}
+section#listar-veiculos .container button.btn.cadastrar {
+  margin-bottom: 20px;
+}
+section#listar-veiculos .container button.btn.cadastrar:hover {
+  background-color: #20bb12;
+}
+section#listar-veiculos .container h2 {
+  font-size: 40px;
+  color: white;
+}
+section#listar-veiculos .container h3 {
+  color: white;
+}
+section#listar-veiculos .container table {
+  color: white;
+  margin-bottom: 40px;
+  border-collapse: collapse;
+  cursor: default;
+}
+section#listar-veiculos .container table th {
+  background-color: #3e3e3e;
+  padding: 20px 0;
+  border: 1px solid white;
+}
+section#listar-veiculos .container table td {
+  border: 1px solid white;
+  padding: 10px 20px;
+}
+
 section#excluir .container {
   color: white;
 }
@@ -675,7 +789,14 @@ footer {
 
 @media (max-width: 1150px) {
   h1 {
-    font-size: 50px !important;
+    font-size: 40px !important;
+  }
+  #newsletter .container {
+    text-align: center;
+  }
+  #newsletter .container h1 {
+    float: none;
+    display: block;
   }
   #newsletter .container form {
     float: none;

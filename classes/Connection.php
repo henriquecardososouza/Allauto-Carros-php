@@ -1,7 +1,5 @@
 <?php
 
-    require_once("Config.php");
-
     class Connection {
         private static $pdoInstance;
         private static $config;

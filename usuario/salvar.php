@@ -5,6 +5,9 @@
     }
     
     error_reporting(E_ERROR | E_PARSE);
+    require_once("../interfaces/iCrud.php");
+    require_once("../classes/Config.php");
+    require_once("../classes/Connection.php");
     require_once("../classes/Crud.php");
     require_once("../classes/Usuario.php");
 
@@ -19,14 +22,16 @@
 
     switch ($acao) {
         case "cadastrar": {
-            $obj = new Usuario($nome, $email, $senha);
+            $params = [$nome, $email, $senha];
+
+            $obj = new Usuario($params);
 
             if ($crud->create($obj)) {
                 $_SESSION['nome'] = $obj->getNome();
                 $_SESSION['email'] = $obj->getEmail();
                 $_SESSION['id'] = $obj->getId();
 
-                echo "<script> alert('Usuário cadastrado com sucesso!'); location.href = '../mostrar.php'; </script>";
+                echo "<script> alert('Usuário cadastrado com sucesso!'); location.href = 'mostrar.php'; </script>";
             }
 
             else {
@@ -40,7 +45,7 @@
             $ids = Crud::getAllIds();
 
             foreach($ids as $id) {
-                $obj = $crud->read($id);
+                $obj = $crud->read($id, "usuario");
 
                 if ($obj->getNome() == $nome && password_verify($_POST['senha'], $obj->getSenha())) {
                     if (!isset($_SESSION)) {
@@ -51,7 +56,7 @@
                     $_SESSION['email'] = $obj->getEmail();
                     $_SESSION['id'] = $obj->getId();
 
-                    echo "<script> alert('Bem vindo {$obj->getNome()}!'); location.href = '../mostrar.php'; </script>";
+                    echo "<script> alert('Bem vindo {$obj->getNome()}!'); location.href = 'mostrar.php'; </script>";
 
                     return;
                 }
@@ -82,7 +87,7 @@
                         }
 
                         else {
-                            location.href = '../listar.php';
+                            location.href = 'listar.php';
                         }
                     </script>";
             }
@@ -105,7 +110,9 @@
         }
 
         case "editar": {
-            $obj = new Usuario($nome, $email, $senha);
+            $params = [$nome, $email, $senha];
+
+            $obj = new Usuario($params);
             $obj->setId($_SESSION['id']);
 
             if ($crud->update($obj)) {
@@ -116,11 +123,11 @@
                 $_SESSION['email'] = $email;
                 $_SESSION['id'] = $obj->getId();
 
-                echo "<script> alert('Dados atualizados com sucesso!'); location.href = '../mostrar.php'; </script>";
+                echo "<script> alert('Dados atualizados com sucesso!'); location.href = 'mostrar.php'; </script>";
             }
 
             else {
-                echo "<script> alert('Ocorreu um erro ao tentar atualizar os dados do usuário!'); location.href = '../mostrar.php'; </script>";
+                echo "<script> alert('Ocorreu um erro ao tentar atualizar os dados do usuário!'); location.href = 'mostrar.php'; </script>";
             }
 
             break;

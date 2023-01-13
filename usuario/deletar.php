@@ -15,28 +15,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allauto Carros | <?php print $_SESSION['nome']; ?></title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
     <header>
         <div class="container">
             <div id="titulo">
-                <a href="./"> <img src="img/logo.webp" alt="Allauto Carros"> </a>
+                <a href="../"> <img src="../img/logo.webp" alt="Allauto Carros"> </a>
             </div>
             
             <nav>
                 <ul>
                     <li>
-                        <a href="./">Home</a>
+                        <a href="../">Home</a>
                     </li>
                     
                     <li>
-                        <a href="sobre.php">Sobre</a>
+                        <a href="../sobre.php">Sobre</a>
                     </li>
                     
                     <li>
-                        <a href="veiculos.php">Veículos</a>
+                        <a href="../veiculos.php">Veículos</a>
                     </li>
                 </ul>
             </nav>
@@ -45,16 +45,15 @@
 
     <section id="excluir">
         <div class="container">
-            <h1>Deseja realmente excluir o usuário <?php print $_SESSION['nome']; ?>?</h1>
+            <h1>Deseja realmente excluir o usuário <?php print $_POST['nome']; ?>?</h1>
 
-            <form action="php/salvar.php" method="POST">
+            <form action="salvar.php" method="POST">
                 <input type="hidden" name='acao' value="excluir">
-                <input type="hidden" name='return' value="mostrar">
-                <input type="hidden" name="id" value="<?php print $_SESSION['id']; ?>">
+                <input type="hidden" name="id" value="<?php print $_POST['id']; ?>">
                 <button type="submit">Excluir</button>
             </form>
 
-            <button onclick=" location.href = 'mostrar.php'; ">Cancelar</button>
+            <button onclick=" location.href = 'listar.php'; ">Cancelar</button>
         </div>
     </section>
    

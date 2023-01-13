@@ -12,6 +12,13 @@
         $usuario = null;
     }
 
+    error_reporting(E_ERROR | E_PARSE);
+    include_once("classes/Config.php");
+    include_once("classes/Connection.php");
+    include_once("interfaces/iCrud.php");
+    include_once("classes/Veiculo.php");
+    include_once("classes/Crud.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +34,7 @@
 <body>
     <header>
         <div class="container">
-            <span><a id="login" href="<?php if (isset($usuario)) { print 'mostrar.php'; } else { print 'login.php'; } ?>"><img src="img/log-in.webp" alt="Login"><?php if (isset($usuario)) { print $usuario; } else { print 'Entrar'; } ?></a></span>
+            <span><a id="login" href="<?php if (isset($usuario)) { print 'usuario/mostrar.php'; } else { print 'login.php'; } ?>"><img src="img/log-in.webp" alt="Login"><?php if (isset($usuario)) { print $usuario; } else { print 'Entrar'; } ?></a></span>
 
             <div id="titulo">
                 <a href="index.php"> <img src="img/logo.webp" alt="Allauto Carros"> </a>
@@ -53,28 +60,34 @@
 
     <section id="produtos">
         <div class="container">
-            <h1 class="teste">Nossos <span>Veículos</span></h1>
+            <h1>Nossos <span>Veículos</span></h1>
 
-            <div class="veiculo">
-                <a href="produtos/bmw-series-5.php">
-                    <img src="img/products/bmw-serie-5-sedan(2).webp" alt="Bmw Série 5">
-                    <h1>Bmw Série 5 - Sedan</h1>
-                </a>
-            </div>
-            
-            <div class="veiculo">
-                <a href="produtos/mercedes-benz-classe-c.php">
-                    <img src="img/products/mercedes-benz-classe-c(2).webp" alt="Mercedes Classe C">
-                    <h1>Mercedes Classe C - Sedan</h1>
-                </a>
-            </div>
-            
-            <div class="veiculo">
-                <a href="produtos/volvo-xc60.php">
-                    <img src="img/products/volvo-xc60(2).webp" alt="Volvo XC60 Recharge">
-                    <h1>Volvo XC60 Recharge</h1>
-                </a>
-            </div>
+            <?php
+
+                $crud = new Crud("veiculos");
+
+                $ids = $crud->getAllIds();
+
+                if ($ids == null) {
+                    print "<h1>No momento não existem veículos em estoque</h1>";
+                }
+
+                else {
+                    foreach($ids as $id) {
+                        $obj = $crud->read($id, "veiculo");
+
+                        print "
+                        <a href='produtos/veiculo.php'>
+                            <div class='veiculo'>
+                                <img src=".$obj->getImgPageVeiculo()." alt=".$obj->getModelo().">
+                                <h1>".$obj->getModelo()."</h1>
+                            </div>
+                        </a>
+                        ";
+                    }
+                }
+
+            ?>
         </div>
     </section>
     

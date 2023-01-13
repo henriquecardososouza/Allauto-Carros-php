@@ -1,5 +1,14 @@
 <?php
 
+    error_reporting(E_ERROR | E_PARSE);
+    include("interfaces/iCrud.php");
+    include("classes/Config.php");
+    include("classes/Connection.php");
+    include("classes/Usuario.php");
+    include("classes/Veiculo.php");
+    include("classes/CarNotExists.php");
+    include("classes/Crud.php");
+
     if (!isset($_SESSION)) {
         session_start();
     }
@@ -10,6 +19,41 @@
 
     else {
         $usuario = null;
+    }
+
+    $crud = new Crud("veiculos");
+
+    $ids = $crud->getRandomFields();
+    $numeros = [];
+
+    if ($ids != null) {
+        foreach($ids as $id) {
+            $numeros[] = $id;
+        }
+    }
+
+    else {
+        for ($i = 0; $i < 4; $i++) {
+            $numeros[] = null;
+        }
+    }
+
+    if (count($numeros) < 4) {
+        for ($i = count($numeros); $i < 4; $i++) {
+            $numeros[] = null;
+        }
+    }
+
+    $obj = [];
+
+    for ($i = 0; $i < 4; $i++) {
+        if ($numeros[$i] == null) {
+            $obj[] = new CarNotExists();
+        }
+
+        else {
+            $obj[] = $crud->read($numeros[$i], "veiculo");
+        }
     }
 
 ?>
@@ -27,7 +71,7 @@
 <body>
     <header>
         <div class="container">
-            <span><a id="login" href="<?php if (isset($usuario)) { print 'mostrar.php'; } else { print 'login.php'; } ?>"><img src="img/log-in.webp" alt="Login"><?php if (isset($usuario)) { print $usuario; } else { print 'Entrar'; } ?></a></span>
+            <span><a id="login" href="<?php if (isset($usuario)) { print 'usuario/mostrar.php'; } else { print 'login.php'; } ?>"><img src="img/log-in.webp" alt="Login"><?php if (isset($usuario)) { print $usuario; } else { print 'Entrar'; } ?></a></span>
 
             <div id="titulo">
                 <a href="index.php"> <img src="img/logo.webp" alt="Allauto Carros"> </a>
@@ -98,48 +142,48 @@
         </div>
 
         <div class="container">
-            <div class="product-container">
-                <a href="produtos/bmw-series-5.html">
+            <a href="<?php if (get_class($obj[0]) == "Veiculo") { print "produtos/veiculo.php"; } else { print "veiculos.php"; } ?>">
+                <div class="product-container">
                     <div class="produto">
-                        <img src="img/products/bmw-serie-5-sedan.webp" alt="Bmw Série 5 - Sendan">
-                        <h2 class="titulo">Bmw Série 5<br></h2>
-                        <h2 class="preco"><label>A partir de</label> R$ 450.950,00</h2>
+                        <img src="<?php print $obj[0]->getImgSlider(); ?>" alt="">
+                        <h2 class="titulo<?php if (get_class($obj[0]) != "Veiculo") { print " not-exists"; } ?>"><?php print $obj[0]->getModelo(); ?><br></h2>
+                        <h2 class="preco"><span><?php if (get_class($obj[0]) == "Veiculo") { print "A partir de"; } else { print " "; } ?></span><?php print $obj[0]->getPreco(); ?></h2>
                     </div>
-                </a>
-            </div>
-            
-            <div class="product-container">
-                <a href="produtos/mercedes-benz-classe-c.html">
-                    <div class="produto">
-                        <img src="img/products/mercedes-benz-classe-c.webp" alt="Mercedes Benz Classe C">
-                        <h2 class="titulo">Mercedes Classe C</h2>
-                        <h2 class="preco"><label>A partir de</label> R$ 359.900,00</h2>
-                    </div>
-                </a>
-            </div>
+                </div>
+            </a>
 
-            <div class="product-container">
-                <a href="produtos/volvo-xc60.html">
+            <a href="<?php if (get_class($obj[1]) == "Veiculo") { print "produtos/veiculo.php"; } else { print "veiculos.php"; } ?>">
+                <div class="product-container">
                     <div class="produto">
-                        <img src="img/products/volvo-xc60.webp" alt="Volvo XC60">
-                        <h2 class="titulo">Volvo XC60</h2>
-                        <h2 class="preco"><label>A partir de</label> R$ 465.950,00</h2>
+                        <img src="<?php print $obj[1]->getImgSlider(); ?>" alt="">
+                        <h2 class="titulo<?php if (get_class($obj[1]) != "Veiculo") { print " not-exists"; } ?>"><?php print $obj[1]->getModelo(); ?><br></h2>
+                        <h2 class="preco"><span><?php if (get_class($obj[1]) == "Veiculo") { print "A partir de"; } else { print "hjdgfjksd"; } ?></span><?php print $obj[1]->getPreco(); ?></h2>
                     </div>
-                </a>
-            </div>
-            
-            <div class="product-container">
-                <a href="produtos/volvo-xc60.html">
+                </div>
+            </a>
+
+            <a href="<?php if (get_class($obj[2]) == "Veiculo") { print "produtos/veiculo.php"; } else { print "veiculos.php"; } ?>">
+                <div class="product-container">
                     <div class="produto">
-                        <img src="img/products/corolla-cross-2023.webp" alt="Corolla Cross 2023">
-                        <h2 class="titulo">Corolla Cross 2023</h2>
-                        <h2 class="preco"><label>A partir de</label> R$ 139.990,00</h2>
+                        <img src="<?php print $obj[2]->getImgSlider(); ?>" alt="">
+                        <h2 class="titulo<?php if (get_class($obj[2]) != "Veiculo") { print " not-exists"; } ?>"><?php print $obj[2]->getModelo(); ?><br></h2>
+                        <h2 class="preco"><span><?php if (get_class($obj[2]) == "Veiculo") { print "A partir de"; } else { print ".  .  ."; } ?></span><?php print $obj[2]->getPreco(); ?></h2>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
+
+            <a href="<?php if (get_class($obj[3]) == "Veiculo") { print "produtos/veiculo.php"; } else { print "veiculos.php"; } ?>">
+                <div class="product-container" id="last-card">
+                    <div class="produto">
+                        <img src="<?php print $obj[3]->getImgSlider(); ?>" alt="">
+                        <h2 class="titulo<?php if (get_class($obj[3]) != "Veiculo") { print " not-exists"; } ?>"><?php print $obj[3]->getModelo(); ?><br></h2>
+                        <h2 class="preco"><span><?php if (get_class($obj[3]) == "Veiculo") { print "A partir de"; } else { print ".  .  ."; } ?></span><?php print $obj[3]->getPreco(); ?></h2>
+                    </div>
+                </div>
+            </a>
 
             <div class="ver-tudo">
-                <a href="veiculos.html">
+                <a href="veiculos.php">
                     <div id="ver-mais">
                         <img src="img/arrow-right.webp" alt="">
                     </div>

@@ -27,7 +27,7 @@
 <body>
     <header>
         <div class="container">
-            <span><a id="login" href="<?php if (isset($usuario)) { print 'mostrar.php'; } else { print 'login.php'; } ?>"><img src="img/log-in.webp" alt="Login"><?php if (isset($usuario)) { print $usuario; } else { print 'Entrar'; } ?></a></span>
+            <span><a id="login" href="<?php if (isset($usuario)) { print 'usuario/mostrar.php'; } else { print 'login.php'; } ?>"><img src="img/log-in.webp" alt="Login"><?php if (isset($usuario)) { print $usuario; } else { print 'Entrar'; } ?></a></span>
 
             <div id="titulo">
                 <a href="index.php"> <img src="img/logo.webp" alt="Allauto Carros"> </a>
