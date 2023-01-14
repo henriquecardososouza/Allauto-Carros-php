@@ -50,9 +50,9 @@
 
             <input type="hidden" name="acao" value="editar">
             <input type="hidden" name="id" value="<?php print $_POST['id']; ?>">
-            <input type="text" name="modelo" placeholder="Modelo" value="<?php print $_POST['modelo']; ?>" required>
-            <input type="text" name="marca" placeholder="Marca" value="<?php print $_POST['marca']; ?>" required>
-            <input type="text" name="preco" placeholder="Preço" value="<?php print $_POST['preco']; ?>" required>
+            <input type="text" name="modelo" placeholder="Modelo" value="<?php print ''.$_POST['modelo'].''; ?>" required>
+            <input type="text" name="marca" placeholder="Marca" value="<?php print ''.$_POST['marca'].''; ?>" required>
+            <input type="text" name="preco" placeholder="Preço" value="<?php print ''.$_POST['preco'].''; ?>" required>
             <br>
             <label>Imagem para o card</label>
             <br>

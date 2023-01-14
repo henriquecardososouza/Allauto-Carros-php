@@ -72,24 +72,23 @@
 
                     foreach($ids as $id) {
                         $obj = $crud->read($id, "veiculo");
-                        
                         print "<tr>";
                         print "<td>".$obj->getModelo()."</td>";
                         print "<td>".$obj->getMarca()."</td>";
                         print "<td>".$obj->getPreco()."</td>";
                         print "<td>
                                 <form action='editar.php' method='POST'>
-                                    <input type='hidden' name='id' value=".$obj->getId().">
-                                    <input type='hidden' name='modelo' value=".$obj->getModelo().">
-                                    <input type='hidden' name='marca' value=".$obj->getMarca().">
-                                    <input type='hidden' name='preco' value=".$obj->getPreco().">
+                                    <input type='hidden' name='id' value='".$obj->getId()."'>
+                                    <input type='hidden' name='modelo' value='".$obj->getModelo()."'>
+                                    <input type='hidden' name='marca' value='".$obj->getMarca()."'>
+                                    <input type='hidden' name='preco' value='".$obj->getPreco()."'>
                                     <button class='btn editar' type='submit'>Editar</button>
                                 </form>
                             </td>";
 
                         print "<td>
                                 <form action='excluir.php' method='POST'>
-                                    <input type='hidden' name='id' value=".$obj->getId().">
+                                    <input type='hidden' name='id' value='".$obj->getId()."'>
                                     <button class='btn excluir' type='submit'>Excluir</button>
                                 </form>
                             </td>";

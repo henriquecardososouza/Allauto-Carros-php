@@ -46,13 +46,13 @@
 
     <section id="mostrar">
         <div class="container">
-            <h1><?php print $_SESSION['nome'] ?></h1>
+            <h1><?php print ''.$_SESSION['nome'].''; ?></h1>
             <br>
-            <label>Email: <?php print $_SESSION['email']; ?></label>
+            <label>Email: <?php print ''.$_SESSION['email'].''; ?></label>
             <br>
 
             <?php
-                if ($_SESSION['nome'] == "Admin") {
+                if ($_SESSION['id'] == 1) {
                     print "<br> <button class='botao' onclick='location.href=\"listar.php\"'>Administrar Usuários</button>";
                     print "<br> <button class='botao produtos' onclick='location.href=\"../veiculo/administrar.php\"'>Administrar Veículos</button>";
                 }

@@ -309,7 +309,7 @@ header #titulo img {
 
 /*section*/
 #sobre .container {
-  transform: translateY(-200px);
+  margin-bottom: 20px;
 }
 #sobre .container #o-que-fazemos {
   background-color: #585858;

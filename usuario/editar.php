@@ -52,8 +52,8 @@
             <form action="salvar.php" method="POST">
                 <input type="hidden" name="acao" value="editar">
 
-                <input id="nome-field" type="text" name="nome" placeholder="Nome" value="<?php print $_SESSION['nome']; ?>" required>
-                <input type="email" name="email" placeholder="Email" value="<?php print $_SESSION['email']; ?>" required>
+                <input id="nome-field" type="text" name="nome" placeholder="Nome" value="<?php print ''.$_SESSION['nome'].''; ?>" required>
+                <input type="email" name="email" placeholder="Email" value="<?php print ''.$_SESSION['email'].''; ?>" required>
                 <input type="password" name="senha" placeholder="Senha" required>
                 <br>
                 <button type="submit">Editar</button>
