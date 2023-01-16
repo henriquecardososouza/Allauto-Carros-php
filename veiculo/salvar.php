@@ -17,10 +17,12 @@
 
     $crud = new Crud("veiculos");
     $acao = $_POST["acao"];
+
     $modelo = $_POST["modelo"];
     $marca = $_POST["marca"];
     $preco = $_POST["preco"];
     $id = $_POST["id"];
+
     $img_slider = $_FILES['imageSlider'];
     $img_page_veiculo = $_FILES['imagePageVeiculo'];
 

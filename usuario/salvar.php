@@ -23,8 +23,18 @@
     switch ($acao) {
         case "cadastrar": {
             $params = [$nome, $email, $senha];
-
             $obj = new Usuario($params);
+
+            $ids = Crud::getAllIds();
+
+            if ($ids != null) {
+                foreach($ids as $id) {
+                    if (strtolower($crud->read($id, "usuario")->getNome()) == strtolower($nome)) {
+                        echo "<script> alert('O usuário já está cadastrado no sistema!'); location.href = '../sign.php'; </script>";
+                        return;
+                    }
+                }
+            }
 
             if ($crud->create($obj)) {
                 $_SESSION['nome'] = $obj->getNome();
