@@ -4,7 +4,7 @@
         session_start();
     }
 
-    if (!isset($_SESSION['nome'])) {
+    if (!isset($_SESSION['id'])) {
         header("location: ./");
     }
 
@@ -52,7 +52,7 @@
             <form action="salvar.php" method="POST">
                 <input type="hidden" name="acao" value="editar">
 
-                <input id="nome-field" type="text" name="nome" placeholder="Nome" value="<?php print ''.$_SESSION['nome'].''; ?>" required>
+                <input type="text" name="nome" placeholder="Nome" value="<?php print ''.$_SESSION['nome'].''; ?>" required>
                 <input type="email" name="email" placeholder="Email" value="<?php print ''.$_SESSION['email'].''; ?>" required>
                 <input type="password" name="senha" placeholder="Senha" required>
                 <br>
@@ -61,18 +61,6 @@
             </form>
         </div>
     </section>
-
-    <script>
-        let nome = document.getElementById("nome-field");
-
-        if (nome.value == "Admin") {
-            nome.readOnly = true;
-        }
-
-        else {
-            nome.readOnly = false;
-        }
-    </script>
 
     <footer>
         <div class="container">

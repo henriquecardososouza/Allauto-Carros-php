@@ -4,7 +4,7 @@
         session_start();
     }
 
-    if (!isset($_SESSION['nome'])) {
+    if (!isset($_SESSION['id'])) {
         header("location: ./");
     }
 

@@ -76,7 +76,7 @@
                         print "<td>".$obj->getNome()."</td>";
                         print "<td>".$obj->getEmail()."</td>";
 
-                        if ($obj->getNome() != "Admin") {
+                        if ($obj->getId() != 1) {
                             print "<td> 
                                 <form action='deletar.php' method='POST'>
                                     <input type='hidden' name='acao' value='excluir'>
