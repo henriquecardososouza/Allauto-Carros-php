@@ -1,10 +1,10 @@
 # Allauto-Carros v2.0
 
-![Allauto Carros](https://i.postimg.cc/G2SyPDDh/image.png)
+![Allauto Carros](https://i.postimg.cc/1XcPbhYp/image1.webp)
 
 ---
 ## Novidades
-- Agora o site possui um sistema de login/sign completo
+- Agora o site possui conteúdo dinâmico
 
 ---
 ## Sobre
@@ -17,28 +17,31 @@
 ---
 ## Demonstração
 
-![Allauto Carros](https://i.postimg.cc/G2LDyyL9/image1.png)
+![Allauto Carros](https://i.postimg.cc/J0WMT4Kr/image2.webp)
 ---
-![Allauto Carros](https://i.postimg.cc/tRm6sJLC/image2.png)
+![Allauto Carros](https://i.postimg.cc/zf6JgkgR/image3.webp)
 ---
-![Allauto Carros](https://i.postimg.cc/GmbbrJqB/image3.png)
+![Allauto Carros](https://i.postimg.cc/V6tzBbqZ/image4.webp)
 ---
-![Allauto Carros](https://i.postimg.cc/SxQbHQxC/image4.png)
+![Allauto Carros](https://i.postimg.cc/Qd6NXDNm/image5.webp)
 ---
-![Allauto Carros](https://i.postimg.cc/DftZVX9s/image5.png)
+![Allauto Carros](https://i.postimg.cc/3xrJ5NhW/image6.webp)
 ---
-![Allauto Carros](https://i.postimg.cc/j2NRqMpf/image6.png)
+![Allauto Carros](https://i.postimg.cc/xT3T4HWW/image7.webp)
 
 ---
 ## Informações
 - Para executar o projeto faça download do mesmo e o execute no servidor de sua preferência
-- **Atenção** Antes de executar o projeto, crie um banco de dados e uma tabela contendo as seguintes colunas:
-  - id (int tamanho = 11);
-  - nome (varchar tamanho = 255);
-  - email (varchar tamanho = 255);
-  - senha (varchar tamanho = 255);
-- Lembre-se de ajustar as configurações do arquivo "classes/Config.php" para os parâmetros do seu banco de dados
-e o valor do parâmetro das chamadas do método construtor da classe Crud. (As instânciações da classe Crud são
-realizadas nos arquivos "php/salvar.php" - linha 11, e no arquivo "listar.php" - linha 56).
+
+- Para maior comodidade agora basta realizar a importação do arquivo de banco de dados do projeto situado
+na pasta banco de dados e configurar as propriedades do seu Host no arquivo "classes/Config.php".
+
+- Para obter acesso aos privilégios de Administrador basta realizar login no site com um usuário que
+possua id = 1.
+
+---
+
+## Futuro
+- Será adicionada a página dos produtos
 
 ---
